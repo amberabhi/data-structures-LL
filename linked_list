@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+   int data;
+   struct node *next;
+}*first=NULL;
+
+void create(int A[],int n){
+    struct node *t,*last;
+    first=(struct node*)malloc(sizeof(struct node));
+    first->data=A[0];
+    first->next=NULL;
+    last=first;
+    
+    for(int i=0;i<5;i++)
+    {
+        t=(struct node*)malloc(sizeof(struct node));
+        t->data=A[i];
+        t->next=NULL;
+        first->data=A[i];
+        first->next=NULL;
+        last->next=t;
+        last=t;
+    }
+}
+
+void display(struct node *first){
+    struct node *head=first;
+    while(head!=NULL)
+    {
+        printf("%d ",head->data);
+        head=head->next;
+    }
+}
+
+int main(){
+    int A[]={13,56,44,88,57};
+    create(A,5);
+    display(first);
+    return 0;
+}
